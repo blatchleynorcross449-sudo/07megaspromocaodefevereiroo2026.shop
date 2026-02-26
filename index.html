@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mega Feirão</title>
+
+<style>
+:root {
+    --primary: #ff3c3c;
+    --bg: #0a0a0a;
+    --card: #141414;
+    --text: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #0a0a0a, #1a0000);
+    color: var(--text);
+}
+
+/* CONTAINER */
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* TOPO */
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: var(--primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    display: inline-block;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.subtitle {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+/* BOX PRINCIPAL */
+.card {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px rgba(255,0,0,0.3);
+    text-align: center;
+}
+
+/* TIMER */
+.timer {
+    font-size: 30px;
+    margin: 15px 0;
+    color: var(--primary);
+}
+
+/* ALERTA */
+.alert {
+    background: rgba(255,0,0,0.1);
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+/* ONLINE */
+.online {
+    margin-top: 10px;
+    font-size: 13px;
+}
+
+/* PROGRESS */
+.progress-box {
+    margin-top: 15px;
+    height: 8px;
+    background: #222;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: var(--primary);
+}
+
+/* CTA */
+.cta {
+    margin-top: 25px;
+}
+
+.cta a {
+    display: block;
+    padding: 18px;
+    border-radius: 12px;
+    background: var(--primary);
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 0 0 20px rgba(255,0,0,0.8);
+    animation: pulse 1s infinite;
+}
+
+/* PROVA SOCIAL */
+.social-proof {
+    margin-top: 20px;
+    font-size: 12px;
+    opacity: 0.7;
+    text-align: center;
+}
+
+/* ANIMAÇÃO */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="badge">🔥 OFERTA RELÂMPAGO</div>
+        <div class="title">MEGA FEIRÃO</div>
+        <div class="subtitle">Só hoje com desconto exclusivo</div>
+    </div>
+
+    <div class="card">
+
+        <div class="timer" id="timer">03:00</div>
+
+        <div class="alert">⚠️ Últimas vagas disponíveis</div>
+
+        <div class="online" id="online">👥 127 pessoas vendo agora</div>
+
+        <div class="progress-box">
+            <div id="progress" class="progress"></div>
+        </div>
+
+        <div class="cta">
+            <a href="https://vesejorge877-maker.github.io/promocoesdefeveremarco2026/">
+                🔥 GARANTIR MINHA VAGA AGORA
+            </a>
+        </div>
+
+    </div>
+
+    <div class="social-proof">
+        ✔ Mais de 3.000 pessoas já aproveitaram essa oferta
+    </div>
+
+</div>
+
+<script>
+// PROGRESSO
+let percent = 0;
+const progress = document.getElementById("progress");
+
+setInterval(() => {
+    percent++;
+    progress.style.width = percent + "%";
+    if (percent >= 100) percent = 0;
+}, 40);
+
+// TIMER
+let time = 180;
+const timer = document.getElementById("timer");
+
+setInterval(() => {
+    let min = Math.floor(time / 60);
+    let sec = time % 60;
+
+    timer.innerText =
+        (min < 10 ? "0" : "") + min + ":" +
+        (sec < 10 ? "0" : "") + sec;
+
+    if (time > 0) time--;
+}, 1000);
+
+// ONLINE
+const online = document.getElementById("online");
+
+setInterval(() => {
+    let num = Math.floor(Math.random() * 60) + 120;
+    online.innerText = "👥 " + num + " pessoas vendo agora";
+}, 3000);
+</script>
+
+</body>
+</html>
